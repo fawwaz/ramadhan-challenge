@@ -98,7 +98,7 @@ class App extends Component {
             <p>
               Baca cara penggunaanya di{' '}
               <a
-                href="https://github.com/fawwaz/ramadhan-challenge"
+                href="https://medium.com/@fawwaz_muhammad/ramadhanchallenge-e8b851cfd7b6"
                 target="_blank"
                 rel="noopener noreferrer"
               >
