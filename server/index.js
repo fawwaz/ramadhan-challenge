@@ -7,7 +7,7 @@ const twitter = require('twitter');
 const path = require('path');
 
 // const KEYWORD = '#DailyRamadanChallenge'
-const KEYWORD = 'bandung';
+const KEYWORD = 'RamadhanChallenge';
 const PORT = process.env.PORT || 5000;
 
 const twitterClient = new twitter({
@@ -25,7 +25,7 @@ const twitterStream = twitterClient.stream('statuses/filter', {
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 // Answer API requests.
-app.get('/api', function(req, res) {
+app.get('/api', function (req, res) {
   var apiResponse = [];
   twitterClient.get(
     'search/tweets',
@@ -33,10 +33,10 @@ app.get('/api', function(req, res) {
       q: KEYWORD,
       count: 50,
     },
-    function(error, tweets, response) {
+    function (error, tweets, response) {
       console.log(tweets);
       if (!error) {
-        apiResponse = (tweets.statuses || []).map(function(tweet) {
+        apiResponse = (tweets.statuses || []).map(function (tweet) {
           return {
             full_text: tweet.text,
             screen_name: tweet.user.screen_name,
@@ -55,8 +55,8 @@ app.get('/api', function(req, res) {
 //   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 // });
 
-io.sockets.on('connection', function(socket) {
-  twitterStream.on('data', function(tweet) {
+io.sockets.on('connection', function (socket) {
+  twitterStream.on('data', function (tweet) {
     if (tweet && tweet.extended_tweet && tweet.extended_tweet.full_text) {
       socket.emit('tweets', {
         full_text: tweet.extended_tweet.full_text,
@@ -66,12 +66,12 @@ io.sockets.on('connection', function(socket) {
     }
   });
 
-  twitterStream.on('error', function(error) {
+  twitterStream.on('error', function (error) {
     console.log(error);
     throw error;
   });
 });
 
-server.listen(PORT, function() {
+server.listen(PORT, function () {
   console.error(`Listening on port ${PORT}`);
 });
