@@ -73,7 +73,6 @@ class App extends Component {
             <div className="message-container">
               <h2 className="message">{loading ? 'Mencari Tantangan...' : selectedTweet.full_text}</h2>
               <p className={`meta ${loading ? 'loading' : ''}`}>
-                <span className="branch"><i className="fa fa-twitter-square" /> </span><br />
                 <span className="commit"><span className="commit-text">by </span> &nbsp; {selectedTweet && selectedTweet.screen_name}</span>
               </p>
             </div>
