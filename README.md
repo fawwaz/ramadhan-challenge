@@ -12,7 +12,7 @@ RamadhanChallenge (RC) has 2 component.
 1. Server  
 It uses [Express](https://expressjs.com), [Socket.IO](https://socket.io) for streaming the twitter data and [Twitter client library](https://github.com/desmondmorris/node-twitter)
 2. Client  
-It uses [React](https://reactjs.org). Because the application is very small, I decide to not using [Redux](https://redux.js.org) at all. 
+It uses [React](https://reactjs.org). Because the application is very small, I decide to not use [Redux](https://redux.js.org) at all. 
 
 ## How it Works 
 First, it will retrieve 50 tweets containing `#RamadhanChallenge` hashtag. It will select randomly from those tweets. At the same time, it will subscribe to twitter stream such if there any new tweets containing that hashtag, it will be streamed to the client in real time.
